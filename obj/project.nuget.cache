@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "nhGepkFwOFhPRP8DbSXfwn/ogTYBRkWRMJCVxS+4o2Ig47jg7O7rX5OaC+/AtyDAOEpUmiqXEiR2Fu2rKSPAfA==",
+  "success": true,
+  "projectFilePath": "/home/zireael9797/Storage/Dev/f#/fsharp_practice/fsharp_practice.fsproj",
+  "expectedPackageFiles": [
+    "/home/zireael9797/.nuget/packages/fsharp.core/5.0.0/fsharp.core.5.0.0.nupkg.sha512",
+    "/home/zireael9797/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
