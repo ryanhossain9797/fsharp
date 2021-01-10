@@ -18,4 +18,4 @@ module Collections =
             xs |> forEach f
         | [] -> ()
 
-    let printEveryItem list = forEach (printfn "%O") list
+    let printEveryItem list = forEach (printf "%O ") list

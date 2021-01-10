@@ -18,7 +18,6 @@ let main argv =
     |> printfn "%s"
 
     let nums = [ 3 .. 2 .. 7 ]
-    printfn "%O" nums
 
     addToList 1 nums |> printfn "%O"
 
@@ -29,6 +28,14 @@ let main argv =
 
     printEveryItem nums
 
-    nums |> forEach (printfn "%O")
+    nums |> forEach (printf "%O ")
+
+    let words = [ "hellow"; "world"; "fuck"; "off" ]
+
+    words
+    |> List.fold (fun accumulator currentItem -> accumulator + currentItem + " ") ""
+    |> printfn "%s"
+
+    words |> List.reduce (+) |> printfn "%s"
 
     0 // return an integer exit code
