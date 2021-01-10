@@ -5,6 +5,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Basic.fs" />
+    <Compile Include="Geometry.fs" />
+    <Compile Include="People.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>
