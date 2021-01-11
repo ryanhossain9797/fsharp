@@ -1,41 +1,23 @@
 // Learn more about F# at http://docs.microsoft.com/dotnet/fsharp
+open System.IO
 
-open System
-open Geometry
-open Creatures
-open Basic
-open Collections
-open People
+let sayHellow = printfn "Hellow %s"
 
 [<EntryPoint>]
 let main argv =
-    let triangle = Shape.Triangle(1., 2., 3.)
-    printfn "%f" (Shape.area triangle)
+    if argv.Length > 0 then
+        if File.Exists argv.[0] then
+            let studentCount =
+                File.ReadAllLines argv.[0]
+                |> Array.toList
+                |> List.tail
+                |> List.length
+                |> printfn "%i"
 
-    { Name = "Raiyan"; Age = 25 |> Age }
-    |> incrementAge 3
-    |> nameAndAge
-    |> printfn "%s"
-
-    let nums = [ 3 .. 2 .. 7 ]
-
-    addToList 1 nums |> printfn "%O"
-
-    getFirstItem nums
-    |> function
-    | Some x -> printfn "%i" x
-    | None -> printfn "fail"
-
-    printEveryItem nums
-
-    nums |> forEach (printf "%O ")
-
-    let words = [ "hellow"; "world"; "fuck"; "off" ]
-
-    words
-    |> List.fold (fun accumulator currentItem -> accumulator + currentItem + " ") ""
-    |> printfn "%s"
-
-    words |> List.reduce (+) |> printfn "%s"
-
-    0 // return an integer exit code
+            0
+        else
+            printfn "File does not exist"
+            2
+    else
+        printfn "Please specify file name"
+        1
