@@ -1,10 +1,7 @@
 namespace ProblemFour
 
-open System
-
-
 module ProblemFour =
-    let threeDigits = [ 1000 .. 9999 ]
+    let threeDigits = [ 100 .. 999 ]
 
     let isPalindrome num =
         num
