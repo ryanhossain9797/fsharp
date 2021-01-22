@@ -16,7 +16,7 @@ module ProblemFour =
 
 
     let run =
-        (List.collect (fun m -> (threeDigits |> List.map (fun n -> m * n))) threeDigits)
+        List.collect (fun m -> (threeDigits |> List.map (fun n -> m * n))) threeDigits
         |> List.filter isPalindrome
         |> List.max
         |> printfn "%i"
