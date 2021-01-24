@@ -4,11 +4,13 @@ open ProblemOne
 open ProblemTwo
 open ProblemThree
 open ProblemFour
+open ProblemFive
 
 [<EntryPoint>]
 let main argv =
     // ProblemOne.run
     // ProblemTwo.run
     // ProblemThree.run
-    ProblemFour.run
+    // ProblemFour.run
+    ProblemFive.run
     0
