@@ -4,11 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ProblemTwo.fs" />
     <Compile Include="ProblemOne.fs" />
+    <Compile Include="ProblemTwo.fs" />
     <Compile Include="ProblemThree.fs" />
     <Compile Include="ProblemFour.fs" />
     <Compile Include="ProblemFive.fs" />
+    <Compile Include="ProblemSix.fs" />
+    <Compile Include="ProblemSeven.fs" />
+    <Compile Include="ProblemEight.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

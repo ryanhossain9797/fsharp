@@ -5,6 +5,9 @@ open ProblemTwo
 open ProblemThree
 open ProblemFour
 open ProblemFive
+open ProblemSix
+open ProblemSeven
+open ProblemEight
 
 [<EntryPoint>]
 let main argv =
@@ -12,5 +15,8 @@ let main argv =
     // ProblemTwo.run
     // ProblemThree.run
     // ProblemFour.run
-    ProblemFive.run
+    // ProblemFive.run
+    // ProblemSix.run
+    // ProblemSeven.run
+    // ProblemEight.run
     0
