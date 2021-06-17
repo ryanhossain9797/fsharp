@@ -1,8 +1,4 @@
-namespace ProblemEight
-
-module ProblemEight =
-
-    let digits = "73167176531330624919225119674426574742355349194934
+let digits = "73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
 12540698747158523863050715693290963295227443043557
@@ -23,21 +19,14 @@ module ProblemEight =
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"
 
-    let toMult = 13
 
-    let run =
-        digits
-        |> Seq.map (fun n -> (int n) - (int '0'))
-        |> Seq.filter (fun n -> n >= 0 && n <= 9)
-        |> Seq.toList
-        |> Seq.unfold
-            (function
-            | head :: tail when tail.Length >= (toMult - 1) ->
-                Some(
-                    (head
-                     * (tail |> List.take (toMult - 1) |> List.reduce (*))),
-                    tail
-                )
-            | _ -> None)
-        |> Seq.max
-        |> printfn "%i"
+let run digitCount maxOp =
+    digits
+    |> Seq.map (fun n -> (uint64 n) - (uint64 '0'))
+    |> Seq.filter (fun n -> (n >= 0UL && n <= 9UL))
+    |> Seq.toList
+    |> Seq.windowed digitCount
+    |> Seq.maxBy (Seq.reduce maxOp)
+    |> Seq.reduce maxOp
+
+printfn "%u" (run 13 (*))
