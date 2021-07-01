@@ -1,3 +1,5 @@
+open System
+
 let isPrime n =
     match n with
     | 1 -> false
@@ -18,8 +20,11 @@ let nextPrime num =
 
 let run num =
     Seq.unfold (fun i -> (nextPrime i) |> fun i -> Some(i, i + 1)) 1
-    |> Seq.takeWhile (fun i -> i < num)
-    |> Seq.map float
+    |> Seq.takeWhile (fun i -> i <= num)
+    |> Seq.map bigint
     |> Seq.sum
 
-printfn "%f" (run 2000000)
+{ 1 .. (Console.ReadLine() |> int) }
+|> Seq.map (fun _ -> (Console.ReadLine() |> int))
+|> Seq.map run
+|> Seq.iter (printfn "%A")

@@ -15,5 +15,6 @@
     <Compile Include="0010.SummationOfPrimes.fsx" />
     <Compile Include="0009.SpecialPythagoreanTriplet.fsx" />
     <Compile Include="0011.LargestProductInAGrid.fsx" />
+    <Compile Include="main.fs" />
   </ItemGroup>
 </Project>

@@ -1,19 +1,27 @@
-let pythagorianTripleValidator num (n, m) =
-    (n, m)
-    |> fun (n, m) ->
-        (((n ** 2.) - (m ** 2.))
-         + (2. * n * m)
-         + ((n ** 2.) + (m ** 2.))) = num
+open System
+
+let validatePerfectSquare n =
+    (float n) |> sqrt |> int |> fun m -> m * m = n
 
 let run sum =
-    [ 1 .. 32 ]
-    |> Seq.map (fun a -> [ 1 .. a ] |> Seq.map (fun b -> (a, b)))
-    |> Seq.concat
-    |> Seq.map (fun (a, b) -> (float a, float b))
-    |> Seq.find (pythagorianTripleValidator 1000.)
-    |> fun (n, m) ->
-        (((n ** 2.) - (m ** 2.))
-         * (2. * n * m)
-         * ((n ** 2.) + (m ** 2.)))
+    [ 0 .. (sum / 2
+            - (match sum % 2 with
+               | 0 -> 1
+               | _ -> 0)) ]
+    |> Seq.map
+        (fun c ->
+            ((sum - c), (sum * (sum - 2 * c) / 2))
+            |> fun (aPlusB, aTimesB) -> (aPlusB, aTimesB, ((aPlusB * aPlusB) - 4 * aTimesB), c))
+    |> Seq.map
+        (fun (aPlusB, aTimesB, bMinusASquared, c) ->
+            match bMinusASquared >= 0
+                  && validatePerfectSquare bMinusASquared
+                  && (aPlusB * aPlusB) - 2 * aTimesB = c * c with
+            | true -> aTimesB * c
+            | false -> -1)
+    |> Seq.max
 
-printfn "%A" (run 1000)
+{ 1 .. (Console.ReadLine() |> int) }
+|> Seq.map (fun _ -> (Console.ReadLine() |> int))
+|> Seq.map run
+|> Seq.iter (printfn "%i")

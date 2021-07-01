@@ -1,3 +1,5 @@
+open System
+
 let isPrime n =
     match n with
     | 1 -> false
@@ -21,4 +23,7 @@ let run num =
     |> Seq.take num
     |> Seq.last
 
-printfn "%i" (run 10001)
+{ 1 .. (Console.ReadLine() |> int) }
+|> Seq.map (fun _ -> (Console.ReadLine() |> int))
+|> Seq.map run
+|> Seq.iter (printfn "%i")

@@ -1,17 +1,20 @@
-open System.Numerics
+open System
 
 
 let run target =
     Seq.unfold
-        (fun (num: BigInteger, div: BigInteger, maxFactor: BigInteger) ->
+        (fun (num: uint64, div: uint64, maxFactor: uint64) ->
             if div > num then
                 None
-            elif num % div = 0I then
-                Some((num, div, div), (num / div, div + 1I, div))
+            elif num % div = 0UL then
+                Some((num, div, div), (num / div, div + 1UL, div))
             else
-                Some((num, div, maxFactor), (num, div + 1I, maxFactor)))
-        (target, 1I, 0I)
+                Some((num, div, maxFactor), (num, div + 1UL, maxFactor)))
+        (target, 1UL, 0UL)
     |> Seq.maxBy (fun (_, _, maxFactor) -> maxFactor)
     |> fun (_, _, factor) -> factor
 
-printfn "%A" (run 600851475143I)
+{ 1UL .. (Console.ReadLine() |> uint64) }
+|> Seq.map (fun _ -> (Console.ReadLine() |> uint64))
+|> Seq.map run
+|> Seq.iter (printfn "%i")

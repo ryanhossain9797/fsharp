@@ -1,20 +1,22 @@
-let threeDigits = [ 100 .. 999 ]
+open System
+
+let threeDigits = [ 999 .. -1 .. 100 ]
 
 let isPalindrome num =
     num
+    |> string
     |> (fun num ->
-        num.ToString()
-        |> fun num -> (num.[..(num.Length / 2)], num.[(num.Length - ((num.Length / 2) + 1))..]))
-    |> (fun (a, b) ->
-        a = (b.ToCharArray()
-             |> Array.toSeq
-             |> Seq.rev
-             |> System.String.Concat))
+        [ 0 .. (num.Length / 2) ]
+        |> Seq.forall (fun n -> num.[n] = num.[num.Length - 1 - n]))
 
 
-let run =
+let run limit =
     List.collect (fun m -> (threeDigits |> List.map (fun n -> m * n))) threeDigits
     |> List.filter isPalindrome
+    |> List.filter (fun n -> n < limit)
     |> List.max
 
-printfn "%i" run
+{ 1 .. (Console.ReadLine() |> int) }
+|> Seq.map (fun _ -> (Console.ReadLine() |> int))
+|> Seq.map run
+|> Seq.iter (printfn "%i")
