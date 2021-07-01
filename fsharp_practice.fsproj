@@ -12,6 +12,8 @@
     <Compile Include="0006.SumSquareDifference.fsx" />
     <Compile Include="0007.10001stPrime.fsx" />
     <Compile Include="0008.LargestProductInASeries.fsx" />
+    <Compile Include="0010.SummationOfPrimes.fsx" />
     <Compile Include="0009.SpecialPythagoreanTriplet.fsx" />
+    <Compile Include="0011.LargestProductInAGrid.fsx" />
   </ItemGroup>
 </Project>

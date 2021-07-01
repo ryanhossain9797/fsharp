@@ -1,9 +1,19 @@
-let run =
-    1
-    |> Seq.unfold (fun n -> Some(n, n + 1))
-    |> Seq.take (1000 / 3 + 2)
-    |> Seq.map (fun n -> (n, n + 1, n + 2))
-    |> Seq.find (fun (a, b, c) -> (a * a + b * b = c * c) && (a + b + c = 1000))
-    |> (fun (a, b, c) -> (a * b * c))
+let pythagorianTripleValidator num (n, m) =
+    (n, m)
+    |> fun (n, m) ->
+        (((n ** 2.) - (m ** 2.))
+         + (2. * n * m)
+         + ((n ** 2.) + (m ** 2.))) = num
 
-printfn "%i" run
+let run sum =
+    [ 1 .. 32 ]
+    |> Seq.map (fun a -> [ 1 .. a ] |> Seq.map (fun b -> (a, b)))
+    |> Seq.concat
+    |> Seq.map (fun (a, b) -> (float a, float b))
+    |> Seq.find (pythagorianTripleValidator 1000.)
+    |> fun (n, m) ->
+        (((n ** 2.) - (m ** 2.))
+         * (2. * n * m)
+         * ((n ** 2.) + (m ** 2.)))
+
+printfn "%A" (run 1000)
