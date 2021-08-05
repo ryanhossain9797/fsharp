@@ -1,14 +1,18 @@
-// Note this one has runtime errors on HackerRank
-
 open System
 
-let run (n: uint64) =
-    [ 1UL .. (n - 1UL) ]
-    |> List.filter (fun x -> x % 3UL = 0UL || x % 5UL = 0UL)
-    |> List.sum
+let sumOfMultiplesTill limit num =
+    ((limit - 1UL) / num)
+    |> (fun x -> num * (x * (x + 1UL) / 2UL))
 
+let run limit =
+    limit
+    |> sumOfMultiplesTill
+    |> (fun x -> (x 3UL) + (x 5UL) - (x 15UL) )
 
-{ 1UL .. (Console.ReadLine() |> uint64) }
-|> Seq.map (fun _ -> (Console.ReadLine() |> uint64))
-|> Seq.map run
+[ 1UL .. (Console.ReadLine() |> uint64) ] 
+|> Seq.map 
+    (fun _ -> 
+        (Console.ReadLine() 
+        |> uint64)
+        |> run)
 |> Seq.iter (printfn "%i")
